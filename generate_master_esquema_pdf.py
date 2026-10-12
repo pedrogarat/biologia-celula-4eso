@@ -1,0 +1,580 @@
+import os
+import subprocess
+import fitz
+
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Esquema Maestro: La Célula Completo (Páginas 10 a 18)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #ffffff;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    padding: 10mm 13mm 8mm 13mm;
+    position: relative;
+    page-break-after: always;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2.5px solid #0284c7;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+  }
+
+  .title-group h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #0369a1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .title-group p {
+    font-size: 9.5px;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  .badge-tag {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .section-card {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 7px;
+    padding: 6px 9px;
+    margin-bottom: 6px;
+    background: #ffffff;
+  }
+
+  .sec-heading {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+
+  .sec-heading.blue { color: #0284c7; }
+  .sec-heading.emerald { color: #059669; }
+  .sec-heading.purple { color: #7c3aed; }
+  .sec-heading.amber { color: #b45309; }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .sub-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .sub-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sub-en {
+    font-size: 8px;
+    color: #0284c7;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .sub-desc {
+    font-size: 9px;
+    line-height: 1.25;
+    color: #475569;
+    margin-top: 2px;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+    margin-bottom: 5px;
+  }
+
+  .compare-table th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    padding: 3px 5px;
+    border: 1px solid #cbd5e1;
+    font-size: 9.5px;
+  }
+
+  .compare-table td {
+    padding: 3px 5px;
+    border: 1px solid #e2e8f0;
+    line-height: 1.25;
+  }
+
+  .compare-table tr:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  .sheet-footer {
+    position: absolute;
+    bottom: 4mm;
+    left: 13mm;
+    right: 13mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5px;
+    color: #94a3b8;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PÁGINA 1: ESTRUCTURA, MEMBRANA Y TRANSPORTE ==================== -->
+<div class="sheet">
+  <div class="header">
+    <div class="title-group">
+      <h1>🧬 ESQUEMA MAESTRO (PARTE 1): LA CÉLULA • TEORÍA Y ENVOLTURAS</h1>
+      <p>Biología y Geología 4º ESO • Unidad 2 • Páginas 10 a 13 del libro</p>
+    </div>
+    <div class="badge-tag">Hoja 1 de 2 • Repaso Global</div>
+  </div>
+
+  <!-- 2.1 TEORÍA CELULAR -->
+  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
+    <div class="sec-heading blue">
+      <span>2.1</span> TEORÍA CELULAR (CELL THEORY) & CRONOLOGÍA
+    </div>
+    <div style="background:#f0f9ff; border-left:3px solid #0284c7; padding:3px 6px; font-size:9.5px; color:#0369a1; margin-bottom:4px;">
+      <strong>Definición:</strong> La célula es la unidad <strong>estructural</strong> (todos formados por ≥1 célula), <strong>funcional</strong> (nutrición y relación), <strong>reproductora</strong> (división previa) y <strong>genética</strong> (transmite ADN).
+    </div>
+    <div class="grid-4">
+      <div class="sub-box">
+        <div class="sub-title">1838 Schleiden <span class="sub-en">Plantas</span></div>
+        <div class="sub-desc">Toda planta está formada por células.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">1839 Schwann <span class="sub-en">Animales</span></div>
+        <div class="sub-desc">Todo animal está formado por células.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">1858 Virchow <span class="sub-en">División</span></div>
+        <div class="sub-desc"><em>Omnis cellula e cellula</em> (célula preexistente).</div>
+      </div>
+      <div class="sub-box" style="border-color:#10b981; background:#f0fdf4;">
+        <div class="sub-title" style="color:#059669;">1888 Ramón y Cajal <span class="sub-en" style="color:#059669;">Neuronas</span></div>
+        <div class="sub-desc">Demostró que el tejido nervioso son células individuales.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2.2 4 ELEMENTOS UNIVERSALES -->
+  <div class="section-card" style="border-left: 3.5px solid #059669;">
+    <div class="sec-heading emerald">
+      <span>2.2</span> COMPONENTES COMUNES A TODAS LAS CÉLULAS (UNIVERSALES)
+    </div>
+    <div class="grid-4">
+      <div class="sub-box" style="background:#f0fdf4;">
+        <div class="sub-title">🛡️ Membrana plasmática</div>
+        <div class="sub-desc">Bicapa lipídica que limita y regula intercambios.</div>
+      </div>
+      <div class="sub-box" style="background:#f0fdf4;">
+        <div class="sub-title">💧 Citoplasma</div>
+        <div class="sub-desc">Medio acuoso con orgánulos y metabolismo celular.</div>
+      </div>
+      <div class="sub-box" style="background:#f0fdf4;">
+        <div class="sub-title">🧬 Material genético</div>
+        <div class="sub-desc">ADN con instrucciones hereditarias y control.</div>
+      </div>
+      <div class="sub-box" style="background:#f0fdf4;">
+        <div class="sub-title">⚙️ Ribosomas</div>
+        <div class="sub-desc">ARN + proteínas responsables de la síntesis proteica.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2.3 PROCARIOTAS VS EUCARIOTAS -->
+  <div class="section-card" style="border-left: 3.5px solid #7c3aed;">
+    <div class="sec-heading purple">
+      <span>2.3</span> MODELOS CELULARES: PROCARIOTAS VS. EUCARIOTAS & ESPECIALIZACIÓN
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th style="color:#0284c7;">Procariota (Bacterias)</th>
+          <th style="color:#7c3aed;">Eucariota (Animales y Plantas)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Núcleo</strong></td>
+          <td><strong>NO tiene</strong>. ADN libre en el <strong>nucleoide</strong>.</td>
+          <td><strong>SÍ tiene</strong>. Rodeado por <strong>doble membrana nuclear</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Orgánulos</strong></td>
+          <td><strong>Sin orgánulos con membrana</strong>. Solo ribosomas.</td>
+          <td><strong>Orgánulos membranosos complejos</strong> (mitocondrias, etc.).</td>
+        </tr>
+        <tr>
+          <td><strong>Tamaño</strong></td>
+          <td>Pequeñas: <strong>0,5 a 5 µm</strong>.</td>
+          <td><strong>&gt;10 veces mayor</strong> (10 a 50 µm).</td>
+        </tr>
+        <tr>
+          <td><strong>Organización</strong></td>
+          <td><strong>Solo unicelulares</strong>.</td>
+          <td><strong>Unicelulares y pluricelulares</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="grid-3">
+      <div class="sub-box" style="background:#faf5ff;">
+        <div class="sub-title" style="color:#6b21a8;">Célula muscular</div>
+        <div class="sub-desc"><strong>Alargada</strong> para permitir contracción y acortamiento.</div>
+      </div>
+      <div class="sub-box" style="background:#faf5ff;">
+        <div class="sub-title" style="color:#6b21a8;">Célula nerviosa (Neurona)</div>
+        <div class="sub-desc"><strong>Ramificada</strong> para transmitir impulsos eléctricos.</div>
+      </div>
+      <div class="sub-box" style="background:#faf5ff;">
+        <div class="sub-title" style="color:#6b21a8;">Célula vegetal</div>
+        <div class="sub-desc"><strong>Poliédrica</strong>, con pared rígida y autótrofa.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3.1 MEMBRANA PLASMÁTICA -->
+  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
+    <div class="sec-heading blue">
+      <span>3.1</span> LA MEMBRANA PLASMÁTICA: ESTRUCTURA (MOSAICO FLUIDO) Y 6 FUNCIONES
+    </div>
+    <div class="grid-2">
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#0369a1;">Composición Bioquímica:</strong>
+        <div class="sub-desc">
+          • <strong>Fosfolípidos:</strong> Bicapa fluida asimétrica (cabezas polares, colas apolares).<br>
+          • <strong>Proteínas:</strong> Transmembrana (canales/receptores) y periféricas.<br>
+          • <strong>Colesterol:</strong> Regula la fluidez en células animales.<br>
+          • <strong>Oligosacáridos (Glucocálix):</strong> Cara externa; reconocimiento e identificación.
+        </div>
+      </div>
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#0369a1;">Las 6 Funciones Clave:</strong>
+        <div class="sub-desc">
+          1. Protección y límite barrera.<br>
+          2. Mantenimiento de la forma.<br>
+          3. Regulación del transporte selectivo.<br>
+          4. Transmisión de señales (receptores).<br>
+          5. Reconocimiento celular e inmunidad.<br>
+          6. Comunicación y adhesión con células adyacentes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSPORTE Y CUBIERTAS CELULARES -->
+  <div class="section-card" style="border-left: 3.5px solid #d97706; margin-bottom:0;">
+    <div class="sec-heading amber">
+      TRANSPORTE Y 3.2 CUBIERTAS CELULARES (PARED CELULAR)
+    </div>
+    <div class="grid-2">
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#b45309;">Transporte de Membrana:</strong>
+        <div class="sub-desc">
+          • <strong>Pequeñas moléculas:</strong> Gases (O₂, CO₂) cruzan directamente la bicapa; agua, iones, glucosa por proteínas canal.<br>
+          • <strong>Partículas grandes:</strong> <strong>Endocitosis</strong> (hacia dentro en vesículas) y <strong>Exocitosis</strong> (secreción hacia fuera).
+        </div>
+      </div>
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#b45309;">Pared Celular (Paredes externas):</strong>
+        <div class="sub-desc">
+          • <strong>Bacterias:</strong> Peptidoglicanos (mureína).<br>
+          • <strong>Vegetales:</strong> Celulosa (matriz amorfa).<br>
+          • <strong>Hongos:</strong> Quitina.<br>
+          • <strong>Función:</strong> Rigidez estructural, forma y protección contra tóxicos y patógenos.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span>Biología 4º ESO • Unidad 2: La Célula</span>
+    <span>Esquema Maestro Completo • Hoja 1</span>
+    <span>Páginas 10 a 13</span>
+  </div>
+</div>
+
+
+<!-- ==================== PÁGINA 2: CITOPLASMA Y TODOS LOS ORGÁNULOS ==================== -->
+<div class="sheet">
+  <div class="header">
+    <div class="title-group">
+      <h1>🧬 ESQUEMA MAESTRO (PARTE 2): CITOPLASMA Y ORGÁNULOS CELULARES</h1>
+      <p>Biología y Geología 4º ESO • Unidad 2 • Páginas 14 a 18 del libro</p>
+    </div>
+    <div class="badge-tag">Hoja 2 de 2 • Orgánulos y Evolución</div>
+  </div>
+
+  <!-- 3.3 CITOESQUELETO -->
+  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
+    <div class="sec-heading blue">
+      <span>3.3</span> CITOPLASMA, CITOSOL Y LOS 3 FILAMENTOS DEL CITOESQUELETO
+    </div>
+    <div class="grid-3">
+      <div class="sub-box">
+        <div class="sub-title">1. Microfilamentos</div>
+        <div class="sub-desc">Proteína <strong>actina</strong> en doble hélice. <strong>Más delgados y frágiles</strong>. Contracción muscular y deformación celular.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Filamentos intermedios</div>
+        <div class="sub-desc">Proteína <strong>citoqueratina</strong> (solo animales). Como cuerdas. <strong>Más resistentes</strong> a tracción mecánica.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">3. Microtúbulos</div>
+        <div class="sub-desc">Proteína <strong>tubulina</strong> en cilindros huecos. <strong>Más gruesos</strong>. Huso mitótico, centrosoma, cilios y flagelos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGÁNULOS DE MEMBRANA SIMPLE -->
+  <div class="section-card" style="border-left: 3.5px solid #7c3aed;">
+    <div class="sec-heading purple">
+      ORGÁNULOS DE MEMBRANA SIMPLE: RETÍCULO, GOLGI, LISOSOMAS Y VACUOLAS
+    </div>
+    <div class="grid-4">
+      <div class="sub-box">
+        <div class="sub-title">RER (Rugoso)</div>
+        <div class="sub-desc">Con ribosomas. Síntesis y empaquetamiento de <strong>proteínas</strong>.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">REL (Liso)</div>
+        <div class="sub-desc">Sin ribosomas. Síntesis de <strong>lípidos</strong> y <strong>destoxificación</strong> de drogas y toxinas.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Aparato de Golgi</div>
+        <div class="sub-desc">Dictiosomas (cara cis recibe RER, cara trans emite vesículas). <strong>Modifica proteínas y forma lisosomas</strong>.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Lisosomas & Vacuolas</div>
+        <div class="sub-desc">
+          • <strong>Lisosomas:</strong> Enzimas digestivas ácidas.<br>
+          • <strong>Vacuolas:</strong> Almacén de agua y <strong>turgencia vegetal</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGÁNULOS DE DOBLE MEMBRANA -->
+  <div class="section-card" style="border-left: 3.5px solid #b45309;">
+    <div class="sec-heading amber">
+      ORGÁNULOS DE DOBLE MEMBRANA & TEORÍA ENDOSIMBIÓTICA (LYNN MARGULIS)
+    </div>
+    <div class="grid-2">
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#b45309;">⚡ Mitocondrias (Animales y Vegetales):</strong>
+        <div class="sub-desc">
+          • <strong>Estructura:</strong> Externa lisa, interna con <strong>crestas</strong>, matriz con <strong>ADN circular</strong> y ribosomas.<br>
+          • <strong>Función:</strong> Respiración celular: <code>Glucosa + 6 O₂ ➔ 6 CO₂ + 6 H₂O + ATP</code>.<br>
+          • División propia por fisión binaria.
+        </div>
+      </div>
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#b45309;">🌱 Cloroplastos (Solo Células Vegetales):</strong>
+        <div class="sub-desc">
+          • <strong>Estructura:</strong> Doble membrana, <strong>estroma</strong> (ADN circular) y <strong>tilacoides</strong> apilados en <strong>grana</strong>.<br>
+          • <strong>Función:</strong> Fotosíntesis: <code>6 CO₂ + 6 H₂O + Luz ➔ Glucosa + 6 O₂</code>.<br>
+          • Fase luminosa en tilacoides; fase oscura en estroma.
+        </div>
+      </div>
+    </div>
+    <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:5px; padding:4px 6px; margin-top:4px; font-size:9px; color:#92400e;">
+      <strong>Teoría Endosimbiótica:</strong> Lynn Margulis demostró que proceden de procariotas fagocitados (endosimbiosis primaria: bacteria aerobia ➔ mitocondria; endosimbiosis secundaria: cianobacteria fotosintética ➔ cloroplasto). <em>Pruebas:</em> doble membrana, ADN circular propio y ribosomas bacterianos.
+    </div>
+  </div>
+
+  <!-- ORGÁNULOS SIN MEMBRANA -->
+  <div class="section-card" style="border-left: 3.5px solid #059669;">
+    <div class="sec-heading emerald">
+      ORGÁNULOS SIN MEMBRANA: RIBOSOMAS Y CENTROSOMA
+    </div>
+    <div class="grid-2">
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#065f46;">⚙️ Ribosomas (En TODAS las células):</strong>
+        <div class="sub-desc">
+          • <strong>Estructura:</strong> ARNr + proteínas, dos subunidades (mayor y menor).<br>
+          • <strong>Localización:</strong> Libres en citosol, en matriz mitocondrial, estroma de cloroplastos, adheridos a RER y envoltura nuclear.<br>
+          • <strong>Función:</strong> Síntesis de proteínas (traducción del mensaje génico).
+        </div>
+      </div>
+      <div class="sub-box">
+        <strong style="font-size:9.5px; color:#065f46;">🎯 Centrosoma (SOLO en Células Animales):</strong>
+        <div class="sub-desc">
+          • <strong>Estructura:</strong> Diplosoma (2 centriolos perpendiculares de 9 tripletes de microtúbulos 9x3), material pericentriolar y áster.<br>
+          • <strong>Funciones:</strong> Centro organizador de microtúbulos (COMT); forma el <strong>huso mitótico</strong> en la división; forma <strong>cilios y flagelos</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA MAESTRA DE PREGUNTAS TRAMPA -->
+  <div class="section-card" style="border-left: 3.5px solid #0284c7; margin-bottom:0;">
+    <div class="sec-heading blue" style="font-size:10px;">
+      CUADRO COMPARATIVO PARA EL EXAMEN: ¿QUIÉN TIENE QUÉ?
+    </div>
+    <table class="compare-table" style="margin-bottom:0;">
+      <thead>
+        <tr>
+          <th>Estructura celular</th>
+          <th>Bacteria (Procariota)</th>
+          <th>Célula Animal (Eucariota)</th>
+          <th>Célula Vegetal (Eucariota)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Membrana plasmática</strong></td>
+          <td> SÍ</td>
+          <td> SÍ (con colesterol)</td>
+          <td> SÍ (sin colesterol)</td>
+        </tr>
+        <tr>
+          <td><strong>Pared celular</strong></td>
+          <td> SÍ (peptidoglicano)</td>
+          <td>❌ NO</td>
+          <td> SÍ (celulosa)</td>
+        </tr>
+        <tr>
+          <td><strong>Núcleo verdadero</strong></td>
+          <td>❌ NO (nucleoide)</td>
+          <td> SÍ (doble membrana)</td>
+          <td> SÍ (doble membrana)</td>
+        </tr>
+        <tr>
+          <td><strong>Mitocondrias</strong></td>
+          <td>❌ NO</td>
+          <td> SÍ</td>
+          <td> SÍ</td>
+        </tr>
+        <tr>
+          <td><strong>Cloroplastos</strong></td>
+          <td>❌ NO</td>
+          <td>❌ NO</td>
+          <td> SÍ</td>
+        </tr>
+        <tr>
+          <td><strong>Centrosoma / Centriolos</strong></td>
+          <td>❌ NO</td>
+          <td> SÍ</td>
+          <td>❌ NO</td>
+        </tr>
+        <tr>
+          <td><strong>Ribosomas</strong></td>
+          <td> SÍ (70S)</td>
+          <td> SÍ (80S y 70S)</td>
+          <td> SÍ (80S y 70S)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sheet-footer">
+    <span>Biología 4º ESO • Unidad 2: La Célula</span>
+    <span>Esquema Maestro Completo • Hoja 2</span>
+    <span>Páginas 14 a 18</span>
+  </div>
+</div>
+
+</body>
+</html>
+"""
+
+with open("esquema_maestro.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+html_path = os.path.abspath('esquema_maestro.html')
+pdf_path = os.path.abspath('Esquema_Maestro_Tema_2_Completo.pdf')
+
+chrome_cmd = [
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    '--headless=new',
+    '--disable-gpu',
+    '--run-all-compositor-stages-before-draw',
+    '--no-pdf-header-footer',
+    '--print-to-pdf=' + pdf_path,
+    'file:///' + html_path.replace('\\', '/')
+]
+
+res = subprocess.run(chrome_cmd, capture_output=True)
+print("Master Schema returncode:", res.returncode)
+
+doc = fitz.open(pdf_path)
+print("Total pages in master schema:", len(doc))
+doc[0].get_pixmap().save('fotos/master_schema_p1.png')
+doc[1].get_pixmap().save('fotos/master_schema_p2.png')
+print("Rendered master schema pages to PNG!")

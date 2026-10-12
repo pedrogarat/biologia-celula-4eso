@@ -1,0 +1,551 @@
+import os
+import subprocess
+
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Esquema Visual de Estudio: La Célula (2.1 - 2.3)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #ffffff;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    padding: 12mm 14mm 10mm 14mm;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2.5px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  .title-group h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0369a1;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .title-group p {
+    font-size: 10.5px;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  .badge-tag {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* SECTION WRAPPERS */
+  .section-card {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 9px;
+    background: #ffffff;
+  }
+
+  .sec-heading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .sec-heading.blue { color: #0284c7; }
+  .sec-heading.emerald { color: #059669; }
+  .sec-heading.purple { color: #7c3aed; }
+
+  /* DEF BANNER */
+  .def-box {
+    background: #f0f9ff;
+    border-left: 3.5px solid #0284c7;
+    padding: 4px 8px;
+    border-radius: 0 4px 4px 0;
+    font-size: 10.5px;
+    line-height: 1.35;
+    color: #0369a1;
+    margin-bottom: 6px;
+  }
+
+  /* 4 POSTULATES */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .post-item {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px;
+  }
+
+  .post-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 10.5px;
+    color: #0f172a;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .post-en {
+    font-size: 8.5px;
+    color: #0284c7;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .post-desc {
+    font-size: 9.5px;
+    line-height: 1.25;
+    color: #475569;
+  }
+
+  /* SCIENTISTS TIMELINE */
+  .timeline-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .sci-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px;
+    position: relative;
+    border-top: 3px solid #0284c7;
+  }
+
+  .sci-box.cajal {
+    border-top-color: #059669;
+    background: #f0fdf4;
+  }
+
+  .sci-year {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #0284c7;
+  }
+
+  .sci-box.cajal .sci-year { color: #059669; }
+
+  .sci-name {
+    font-weight: 700;
+    font-size: 10px;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .sci-desc {
+    font-size: 9px;
+    color: #475569;
+    line-height: 1.2;
+  }
+
+  /* SECTION 2.2 */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .elem-card {
+    background: #f0fdf4;
+    border: 1px solid #a7f3d0;
+    border-radius: 6px;
+    padding: 6px;
+  }
+
+  .elem-header {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .elem-en {
+    font-size: 8.5px;
+    color: #059669;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .elem-desc {
+    font-size: 9.5px;
+    line-height: 1.25;
+    color: #374151;
+  }
+
+  /* SECTION 2.3 TABLES */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5px;
+    margin-bottom: 8px;
+  }
+
+  .compare-table th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    padding: 4px 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 10px;
+  }
+
+  .compare-table td {
+    padding: 4px 6px;
+    border: 1px solid #e2e8f0;
+    line-height: 1.25;
+  }
+
+  .compare-table tr:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  /* SHAPES ROW */
+  .shapes-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .shape-box {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 6px;
+    padding: 6px;
+  }
+
+  .shape-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #6b21a8;
+    margin-bottom: 1px;
+  }
+
+  .shape-en {
+    font-size: 8.5px;
+    color: #7c3aed;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .shape-desc {
+    font-size: 9px;
+    color: #4c1d95;
+    line-height: 1.25;
+  }
+
+  /* EXAM TRAPS BOX */
+  .traps-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 9.5px;
+    line-height: 1.3;
+    color: #92400e;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .traps-badge {
+    background: #f59e0b;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 8.5px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  .sheet-footer {
+    position: absolute;
+    bottom: 5mm;
+    left: 14mm;
+    right: 14mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5px;
+    color: #94a3b8;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title-group">
+      <h1>🧬 ESQUEMA DE ESTUDIO: LA CÉLULA (THE CELL)</h1>
+      <p>Biología y Geología 4º ESO • Sección Bilingüe • Apartados 2.1 a 2.3</p>
+    </div>
+    <div class="badge-tag">Chuleta de Repaso (1 Página)</div>
+  </div>
+
+  <!-- SECCIÓN 2.1 -->
+  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
+    <div class="sec-heading blue">
+      <span>2.1</span> TEORÍA CELULAR (CELL THEORY)
+    </div>
+
+    <div class="def-box">
+      <strong>Definición oficial:</strong> La célula es la unidad <strong>estructural</strong>, <strong>funcional</strong>, <strong>reproductora</strong> y <strong>genética</strong> de todos los seres vivos.
+    </div>
+
+    <!-- 4 POSTULADOS -->
+    <div class="grid-4">
+      <div class="post-item">
+        <div class="post-title">1. Estructural</div>
+        <div class="post-en">Structural unit</div>
+        <div class="post-desc">Todo ser vivo está formado por <strong>al menos 1 célula</strong>.</div>
+      </div>
+      <div class="post-item">
+        <div class="post-title">2. Funcional</div>
+        <div class="post-en">Functional unit</div>
+        <div class="post-desc">Capaz de nutrirse y relacionarse (<strong>nutrition & interaction</strong>).</div>
+      </div>
+      <div class="post-item">
+        <div class="post-title">3. Reproductora</div>
+        <div class="post-en">Reproductive unit</div>
+        <div class="post-desc">Toda célula proviene de otra preexistente (<strong>pre-existing cells</strong>).</div>
+      </div>
+      <div class="post-item">
+        <div class="post-title">4. Genética</div>
+        <div class="post-en">Genetic unit</div>
+        <div class="post-desc">Porta el ADN y lo transmite a los descendientes (<strong>descendants</strong>).</div>
+      </div>
+    </div>
+
+    <!-- CRONOLOGÍA CIENTÍFICOS -->
+    <div class="timeline-row">
+      <div class="sci-box">
+        <div class="sci-year">1838</div>
+        <div class="sci-name">Matthias Schleiden</div>
+        <div class="sci-desc">Botánico alemán ➔ Aplica la teoría a las <strong>plantas (plants)</strong>.</div>
+      </div>
+      <div class="sci-box">
+        <div class="sci-year">1839</div>
+        <div class="sci-name">Theodor Schwann</div>
+        <div class="sci-desc">Médico alemán ➔ La extiende a todos los <strong>animales (animals)</strong>.</div>
+      </div>
+      <div class="sci-box">
+        <div class="sci-year">1858</div>
+        <div class="sci-name">Rudolf Virchow</div>
+        <div class="sci-desc">Médico alemán ➔ Origen: <em>Omnis cellula e cellula</em> (división celular).</div>
+      </div>
+      <div class="sci-box cajal">
+        <div class="sci-year">1888</div>
+        <div class="sci-name">Santiago Ramón y Cajal</div>
+        <div class="sci-desc">Médico español ➔ Universaliza la teoría: <strong>tejido nervioso (neuronas)</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2.2 -->
+  <div class="section-card" style="border-left: 3.5px solid #059669;">
+    <div class="sec-heading emerald">
+      <span>2.2</span> COMPONENTES COMUNES A TODAS LAS CÉLULAS (BASIC CELL COMPONENTS)
+    </div>
+
+    <div class="elements-grid">
+      <div class="elem-card">
+        <div class="elem-header">🛡️ Membrana plasmática</div>
+        <div class="elem-en">Plasma membrane</div>
+        <div class="elem-desc">Bicapa que rodea la célula y regula el intercambio de sustancias dentro/fuera.</div>
+      </div>
+      <div class="elem-card">
+        <div class="elem-header">💧 Citoplasma</div>
+        <div class="elem-en">Cytoplasm</div>
+        <div class="elem-desc">Fluido interno con orgánulos donde ocurren las reacciones químicas vitales.</div>
+      </div>
+      <div class="elem-card">
+        <div class="elem-header">🧬 Material genético</div>
+        <div class="elem-en">Genetic material (DNA)</div>
+        <div class="elem-desc">Ácidos nucleicos hereditarios que regulan funciones y controlan reproducción.</div>
+      </div>
+      <div class="elem-card">
+        <div class="elem-header">⚙️ Ribosomas</div>
+        <div class="elem-en">Ribosomes</div>
+        <div class="elem-desc">Partículas de ARN + proteínas encargadas de la síntesis de proteínas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2.3 -->
+  <div class="section-card" style="border-left: 3.5px solid #7c3aed;">
+    <div class="sec-heading purple">
+      <span>2.3</span> MODELOS CELULARES: PROCARIOTAS VS. EUCARIOTAS
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Característica</th>
+          <th style="width: 40%; color: #0369a1;">PROCARIOTA (Bacterias)</th>
+          <th style="width: 40%; color: #7c3aed;">EUCARIOTA (Animales / Plantas)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Núcleo (Nucleus)</strong></td>
+          <td><strong>NO tiene</strong>. ADN libre en el citoplasma en un <strong>nucleoide</strong>.</td>
+          <td><strong>SÍ tiene</strong>. Rodeado por <strong>doble membrana nuclear</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Orgánulos</strong></td>
+          <td><strong>Sin membranas internas</strong> ni orgánulos membranosos.</td>
+          <td><strong>Orgánulos complejos con membrana</strong> (mitocondrias, etc.).</td>
+        </tr>
+        <tr>
+          <td><strong>Tamaño (Size)</strong></td>
+          <td>Pequeñas: <strong>0,5 a 5 µm</strong>.</td>
+          <td><strong>&gt;10 veces mayor</strong> de media (aprox. 10 a 50 µm).</td>
+        </tr>
+        <tr>
+          <td><strong>Organización</strong></td>
+          <td><strong>Solo unicelulares</strong>. Nunca pluricelulares.</td>
+          <td>Forman organismos <strong>unicelulares y pluricelulares</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sec-heading purple" style="font-size: 11px; margin-top: 4px;">
+      FORMA Y ESPECIALIZACIÓN CELULAR (SHAPE & FUNCTION)
+    </div>
+
+    <div class="shapes-row">
+      <div class="shape-box">
+        <div class="shape-title">💪 Célula Muscular</div>
+        <div class="shape-en">Muscle cell ➔ Elongated</div>
+        <div class="shape-desc">Forma <strong>alargada</strong> para permitir la contracción y el movimiento.</div>
+      </div>
+      <div class="shape-box">
+        <div class="shape-title">⚡ Célula Nerviosa (Neurona)</div>
+        <div class="shape-en">Nerve cell ➔ Branch out</div>
+        <div class="shape-desc">Forma <strong>ramificada</strong> para transmitir impulsos eléctricos a distancia.</div>
+      </div>
+      <div class="shape-box">
+        <div class="shape-title">🌱 Célula Vegetal</div>
+        <div class="shape-en">Plant cell ➔ Polyhedral</div>
+        <div class="shape-desc">Forma <strong>poliédrica</strong>, con pared rígida y nutrición <em>autótrofa</em>.</div>
+      </div>
+    </div>
+
+    <!-- NUTRICIÓN -->
+    <div class="traps-box">
+      <div>
+        <strong>Nutrición Heterótrofa (Animales):</strong> No fabrican su propio alimento; se nutren de otras fuentes.
+      </div>
+      <div>
+        <strong>Nutrición Autótrofa (Plantas):</strong> Producen su propio alimento orgánico por fotosíntesis.
+      </div>
+      <span class="traps-badge">Clave Examen</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="sheet-footer">
+    <span>Biología 4º ESO • Unidad 2: La Célula (The Cell)</span>
+    <span>Esquema y Hoja de Repaso para Blanca</span>
+    <span>Páginas del libro: 10 y 11</span>
+  </div>
+
+</div>
+
+</body>
+</html>
+"""
+
+with open("esquema.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+html_path = os.path.abspath('esquema.html')
+pdf_path = os.path.abspath('Esquema_Visual_2.1_al_2.3.pdf')
+
+chrome_cmd = [
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    '--headless=new',
+    '--disable-gpu',
+    '--run-all-compositor-stages-before-draw',
+    '--no-pdf-header-footer',
+    '--print-to-pdf=' + pdf_path,
+    'file:///' + html_path.replace('\\', '/')
+]
+
+res = subprocess.run(chrome_cmd, capture_output=True)
+print("Esquema PDF generated, returncode:", res.returncode)
+
+import fitz
+doc = fitz.open(pdf_path)
+print("Pages:", len(doc))
+doc[0].get_pixmap().save('fotos/esquema_page_1.png')
+print("Rendered esquema PNG")
