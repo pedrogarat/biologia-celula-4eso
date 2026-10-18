@@ -6,7 +6,7 @@ html_content = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Esquema Maestro: La Célula Completo (Páginas 10 a 18)</title>
+<title>Esquema Maestro: La Célula y Reproducción Celular (Páginas 10 a 24)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
@@ -50,7 +50,7 @@ html_content = """<!DOCTYPE html>
 
   .title-group h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: 17px;
+    font-size: 16.5px;
     font-weight: 800;
     color: #0369a1;
     display: flex;
@@ -99,6 +99,7 @@ html_content = """<!DOCTYPE html>
   .sec-heading.emerald { color: #059669; }
   .sec-heading.purple { color: #7c3aed; }
   .sec-heading.amber { color: #b45309; }
+  .sec-heading.rose { color: #e11d48; }
 
   .grid-4 {
     display: grid;
@@ -149,404 +150,427 @@ html_content = """<!DOCTYPE html>
     margin-top: 2px;
   }
 
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 9px;
-    margin-bottom: 5px;
-  }
-
-  .compare-table th {
-    background: #f1f5f9;
-    color: #0f172a;
-    font-family: 'Outfit', sans-serif;
+  .hl-formula {
+    background: #fef08a;
+    color: #854d0e;
+    font-family: monospace;
     font-weight: 700;
-    text-align: left;
-    padding: 3px 5px;
-    border: 1px solid #cbd5e1;
-    font-size: 9.5px;
-  }
-
-  .compare-table td {
-    padding: 3px 5px;
-    border: 1px solid #e2e8f0;
-    line-height: 1.25;
-  }
-
-  .compare-table tr:nth-child(even) {
-    background: #f8fafc;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 8.5px;
   }
 
   .sheet-footer {
     position: absolute;
-    bottom: 4mm;
+    bottom: 5mm;
     left: 13mm;
     right: 13mm;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 8.5px;
     color: #94a3b8;
     border-top: 1px solid #e2e8f0;
-    padding-top: 2px;
+    padding-top: 3px;
+    font-weight: 600;
+  }
+
+  table.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.8px;
+    margin-top: 4px;
+  }
+
+  table.matrix-table th {
+    background: #0284c7;
+    color: #ffffff;
+    padding: 4px 6px;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+  }
+
+  table.matrix-table td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+  }
+
+  table.matrix-table tr:nth-child(even) {
+    background: #f8fafc;
   }
 </style>
 </head>
 <body>
 
-<!-- ==================== PÁGINA 1: ESTRUCTURA, MEMBRANA Y TRANSPORTE ==================== -->
+<!-- ==================== HOJA 1: FUNDAMENTOS Y MEMBRANA ==================== -->
 <div class="sheet">
   <div class="header">
     <div class="title-group">
-      <h1>🧬 ESQUEMA MAESTRO (PARTE 1): LA CÉLULA • TEORÍA Y ENVOLTURAS</h1>
-      <p>Biología y Geología 4º ESO • Unidad 2 • Páginas 10 a 13 del libro</p>
+      <h1>🧬 ESQUEMA MAESTRO (1/3): FUNDAMENTOS Y MEMBRANA</h1>
+      <p>Apartados 2.1 a 2.7 (Páginas 10 a 14) • Biología y Geología 4º ESO</p>
     </div>
-    <div class="badge-tag">Hoja 1 de 2 • Repaso Global</div>
+    <div class="badge-tag">BLOQUE I: CÉLULA Y TRANSPORTE</div>
   </div>
 
-  <!-- 2.1 TEORÍA CELULAR -->
-  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
-    <div class="sec-heading blue">
-      <span>2.1</span> TEORÍA CELULAR (CELL THEORY) & CRONOLOGÍA
-    </div>
-    <div style="background:#f0f9ff; border-left:3px solid #0284c7; padding:3px 6px; font-size:9.5px; color:#0369a1; margin-bottom:4px;">
-      <strong>Definición:</strong> La célula es la unidad <strong>estructural</strong> (todos formados por ≥1 célula), <strong>funcional</strong> (nutrición y relación), <strong>reproductora</strong> (división previa) y <strong>genética</strong> (transmite ADN).
-    </div>
-    <div class="grid-4">
+  <!-- Bloque 1: Teoría Celular -->
+  <div class="section-card" style="border-left: 4px solid #0284c7;">
+    <div class="sec-heading blue">📌 1. TEORÍA CELULAR (HOOKEY LEEUWENHOEK &rarr; SCHLEIDEN, SCHWANN & VIRCHOW)</div>
+    <div class="grid-3">
       <div class="sub-box">
-        <div class="sub-title">1838 Schleiden <span class="sub-en">Plantas</span></div>
-        <div class="sub-desc">Toda planta está formada por células.</div>
+        <div class="sub-title">1. Estructural (Morphological)</div>
+        <div class="sub-desc">Todos los seres vivos están formados por una o más células. La célula es la unidad de materia viva básica.</div>
       </div>
       <div class="sub-box">
-        <div class="sub-title">1839 Schwann <span class="sub-en">Animales</span></div>
-        <div class="sub-desc">Todo animal está formado por células.</div>
+        <div class="sub-title">2. Fisiológica (Physiological)</div>
+        <div class="sub-desc">La célula es la unidad vital mínima capaz de nutrirse, relacionarse con el medio y reproducirse autónomamente.</div>
       </div>
       <div class="sub-box">
-        <div class="sub-title">1858 Virchow <span class="sub-en">División</span></div>
-        <div class="sub-desc"><em>Omnis cellula e cellula</em> (célula preexistente).</div>
-      </div>
-      <div class="sub-box" style="border-color:#10b981; background:#f0fdf4;">
-        <div class="sub-title" style="color:#059669;">1888 Ramón y Cajal <span class="sub-en" style="color:#059669;">Neuronas</span></div>
-        <div class="sub-desc">Demostró que el tejido nervioso son células individuales.</div>
+        <div class="sub-title">3. Genética (Reproductive)</div>
+        <div class="sub-desc">Toda célula procede de otra célula anterior por división (<em>Omnis cellula e cellula</em>). Contiene el material hereditario.</div>
       </div>
     </div>
   </div>
 
-  <!-- 2.2 4 ELEMENTOS UNIVERSALES -->
-  <div class="section-card" style="border-left: 3.5px solid #059669;">
-    <div class="sec-heading emerald">
-      <span>2.2</span> COMPONENTES COMUNES A TODAS LAS CÉLULAS (UNIVERSALES)
-    </div>
-    <div class="grid-4">
-      <div class="sub-box" style="background:#f0fdf4;">
-        <div class="sub-title">🛡️ Membrana plasmática</div>
-        <div class="sub-desc">Bicapa lipídica que limita y regula intercambios.</div>
+  <!-- Bloque 2: Procariota vs Eucariota -->
+  <div class="section-card" style="border-left: 4px solid #059669;">
+    <div class="sec-heading emerald">🔬 2. TIPOS DE ORGANIZACIÓN CELULAR: PROCARIOTA VS EUCARIOTA</div>
+    <div class="grid-2">
+      <div class="sub-box" style="background:#f0fdf4; border-color:#86efac;">
+        <div class="sub-title" style="color:#166534;">Célula Procariota <span class="sub-en">Bacterias / Arqueas</span></div>
+        <div class="sub-desc" style="color:#14532d;">
+          • <strong>Sin núcleo verdadero:</strong> ADN circular bicatenario desnudo en el <em>nucleoide</em>.<br>
+          • <strong>Sin orgánulos membranosos:</strong> No tiene mitocondrias ni Golgi ni retículo.<br>
+          • <strong>Ribosomas pequeños (70S)</strong> y pared celular de peptidoglicano / mureína.<br>
+          • Estructuras accesorias: plásmidos, flagelos, fimbrias/pili y cápsula mucosa.
+        </div>
       </div>
-      <div class="sub-box" style="background:#f0fdf4;">
-        <div class="sub-title">💧 Citoplasma</div>
-        <div class="sub-desc">Medio acuoso con orgánulos y metabolismo celular.</div>
-      </div>
-      <div class="sub-box" style="background:#f0fdf4;">
-        <div class="sub-title">🧬 Material genético</div>
-        <div class="sub-desc">ADN con instrucciones hereditarias y control.</div>
-      </div>
-      <div class="sub-box" style="background:#f0fdf4;">
-        <div class="sub-title">⚙️ Ribosomas</div>
-        <div class="sub-desc">ARN + proteínas responsables de la síntesis proteica.</div>
+      <div class="sub-box" style="background:#eff6ff; border-color:#93c5fd;">
+        <div class="sub-title" style="color:#1e40af;">Célula Eucariota <span class="sub-en">Animal / Vegetal / Hongos</span></div>
+        <div class="sub-desc" style="color:#1e3a8a;">
+          • <strong>Núcleo delimitado por doble membrana</strong> con poros y cromatina con histonas.<br>
+          • <strong>Compartimentación interna:</strong> Orgánulos membranosos especializados.<br>
+          • <strong>Ribosomas grandes (80S)</strong> en citoplasma y RER; citoesqueleto complejo.<br>
+          • <strong>Diferencia vegetal:</strong> Pared de celulosa, cloroplastos y vacuola gigante central.
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 2.3 PROCARIOTAS VS EUCARIOTAS -->
-  <div class="section-card" style="border-left: 3.5px solid #7c3aed;">
-    <div class="sec-heading purple">
-      <span>2.3</span> MODELOS CELULARES: PROCARIOTAS VS. EUCARIOTAS & ESPECIALIZACIÓN
+  <!-- Bloque 3: Membrana Plasmática y Transporte -->
+  <div class="section-card" style="border-left: 4px solid #7c3aed;">
+    <div class="sec-heading purple">🚪 3. MEMBRANA PLASMÁTICA (MOSAICO FLUIDO DE SINGER & NICOLSON) Y TRANSPORTE</div>
+    <div class="grid-3" style="margin-bottom: 5px;">
+      <div class="sub-box">
+        <div class="sub-title">Bicapa Fosfolipídica</div>
+        <div class="sub-desc">Cabezas hidrofílicas (hacia fuera/dentro) y colas hidrofóbicas enfrentadas. Da fluidez y barrera semipermeable.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Proteínas y Colesterol</div>
+        <div class="sub-desc">Proteínas transmembrana (canales, bombas) y periféricas. Colesterol (regula fluidez y estabilidad en animales).</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Glucocálix (Carbohidratos)</div>
+        <div class="sub-desc">Glucolípidos y glucoproteínas en la cara externa. Función: reconocimiento celular, adhesión e inmunidad.</div>
+      </div>
     </div>
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Característica</th>
-          <th style="color:#0284c7;">Procariota (Bacterias)</th>
-          <th style="color:#7c3aed;">Eucariota (Animales y Plantas)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Núcleo</strong></td>
-          <td><strong>NO tiene</strong>. ADN libre en el <strong>nucleoide</strong>.</td>
-          <td><strong>SÍ tiene</strong>. Rodeado por <strong>doble membrana nuclear</strong>.</td>
-        </tr>
-        <tr>
-          <td><strong>Orgánulos</strong></td>
-          <td><strong>Sin orgánulos con membrana</strong>. Solo ribosomas.</td>
-          <td><strong>Orgánulos membranosos complejos</strong> (mitocondrias, etc.).</td>
-        </tr>
-        <tr>
-          <td><strong>Tamaño</strong></td>
-          <td>Pequeñas: <strong>0,5 a 5 µm</strong>.</td>
-          <td><strong>&gt;10 veces mayor</strong> (10 a 50 µm).</td>
-        </tr>
-        <tr>
-          <td><strong>Organización</strong></td>
-          <td><strong>Solo unicelulares</strong>.</td>
-          <td><strong>Unicelulares y pluricelulares</strong>.</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <!-- Modos de Transporte -->
     <div class="grid-3">
       <div class="sub-box" style="background:#faf5ff;">
-        <div class="sub-title" style="color:#6b21a8;">Célula muscular</div>
-        <div class="sub-desc"><strong>Alargada</strong> para permitir contracción y acortamiento.</div>
+        <div class="sub-title" style="color:#6b21a8;">1. Difusión Simple</div>
+        <div class="sub-desc"><strong>Pasivo (sin ATP)</strong> a favor de gradiente a través de la bicapa. Moléculas no polares, gases (O₂, CO₂) y agua (ósmosis).</div>
       </div>
       <div class="sub-box" style="background:#faf5ff;">
-        <div class="sub-title" style="color:#6b21a8;">Célula nerviosa (Neurona)</div>
-        <div class="sub-desc"><strong>Ramificada</strong> para transmitir impulsos eléctricos.</div>
+        <div class="sub-title" style="color:#6b21a8;">2. Difusión Facilitada</div>
+        <div class="sub-desc"><strong>Pasivo (sin ATP)</strong> a favor de gradiente mediante proteínas canal o permeasas transportadoras (glucosa, iones).</div>
       </div>
-      <div class="sub-box" style="background:#faf5ff;">
-        <div class="sub-title" style="color:#6b21a8;">Célula vegetal</div>
-        <div class="sub-desc"><strong>Poliédrica</strong>, con pared rígida y autótrofa.</div>
+      <div class="sub-box" style="background:#fdf2f8;">
+        <div class="sub-title" style="color:#9d174d;">3. Transporte Activo</div>
+        <div class="sub-desc"><strong>Consume ATP</strong> en contra de gradiente electroquímico mediante bombas proteicas (ej. Bomba de Na⁺/K⁺ ATPasa).</div>
       </div>
     </div>
   </div>
 
-  <!-- 3.1 MEMBRANA PLASMÁTICA -->
-  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
-    <div class="sec-heading blue">
-      <span>3.1</span> LA MEMBRANA PLASMÁTICA: ESTRUCTURA (MOSAICO FLUIDO) Y 6 FUNCIONES
-    </div>
-    <div class="grid-2">
+  <!-- Bloque 4: Citoesqueleto y Pared -->
+  <div class="section-card" style="border-left: 4px solid #b45309;">
+    <div class="sec-heading amber">🧱 4. PARED CELULAR, CITOSOL, CITOESQUELETO Y CENTROSOMA</div>
+    <div class="grid-4">
       <div class="sub-box">
-        <strong style="font-size:9.5px; color:#0369a1;">Composición Bioquímica:</strong>
-        <div class="sub-desc">
-          • <strong>Fosfolípidos:</strong> Bicapa fluida asimétrica (cabezas polares, colas apolares).<br>
-          • <strong>Proteínas:</strong> Transmembrana (canales/receptores) y periféricas.<br>
-          • <strong>Colesterol:</strong> Regula la fluidez en células animales.<br>
-          • <strong>Oligosacáridos (Glucocálix):</strong> Cara externa; reconocimiento e identificación.
-        </div>
+        <div class="sub-title">Pared Celular</div>
+        <div class="sub-desc">Externa a la membrana en vegetales. Fibras de <strong>celulosa</strong>. Rigidez, turgencia y protección mecánica.</div>
       </div>
       <div class="sub-box">
-        <strong style="font-size:9.5px; color:#0369a1;">Las 6 Funciones Clave:</strong>
-        <div class="sub-desc">
-          1. Protección y límite barrera.<br>
-          2. Mantenimiento de la forma.<br>
-          3. Regulación del transporte selectivo.<br>
-          4. Transmisión de señales (receptores).<br>
-          5. Reconocimiento celular e inmunidad.<br>
-          6. Comunicación y adhesión con células adyacentes.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TRANSPORTE Y CUBIERTAS CELULARES -->
-  <div class="section-card" style="border-left: 3.5px solid #d97706; margin-bottom:0;">
-    <div class="sec-heading amber">
-      TRANSPORTE Y 3.2 CUBIERTAS CELULARES (PARED CELULAR)
-    </div>
-    <div class="grid-2">
-      <div class="sub-box">
-        <strong style="font-size:9.5px; color:#b45309;">Transporte de Membrana:</strong>
-        <div class="sub-desc">
-          • <strong>Pequeñas moléculas:</strong> Gases (O₂, CO₂) cruzan directamente la bicapa; agua, iones, glucosa por proteínas canal.<br>
-          • <strong>Partículas grandes:</strong> <strong>Endocitosis</strong> (hacia dentro en vesículas) y <strong>Exocitosis</strong> (secreción hacia fuera).
-        </div>
+        <div class="sub-title">Citoesqueleto</div>
+        <div class="sub-desc">Red proteica: microfilamentos de actina, filamentos intermedios y microtúbulos de tubulina. Movimiento y forma.</div>
       </div>
       <div class="sub-box">
-        <strong style="font-size:9.5px; color:#b45309;">Pared Celular (Paredes externas):</strong>
-        <div class="sub-desc">
-          • <strong>Bacterias:</strong> Peptidoglicanos (mureína).<br>
-          • <strong>Vegetales:</strong> Celulosa (matriz amorfa).<br>
-          • <strong>Hongos:</strong> Quitina.<br>
-          • <strong>Función:</strong> Rigidez estructural, forma y protección contra tóxicos y patógenos.
-        </div>
+        <div class="sub-title">Centrosoma</div>
+        <div class="sub-desc">En células animales: 2 centriolos perpendiculares (9 tripletes de microtúbulos). Organiza el huso acromático.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Endo/Exocitosis</div>
+        <div class="sub-desc">Transporte vesicular de macromoléculas: invaginación hacia el interior (endocitosis) o secreción al exterior (exocitosis).</div>
       </div>
     </div>
   </div>
 
   <div class="sheet-footer">
-    <span>Biología 4º ESO • Unidad 2: La Célula</span>
-    <span>Esquema Maestro Completo • Hoja 1</span>
-    <span>Páginas 10 a 13</span>
+    <span>Biología 4º ESO • Tema 2: La Célula y Reproducción</span>
+    <span>Esquema Maestro Completo • Hoja 1 de 3</span>
+    <span>Páginas 10 a 14</span>
   </div>
 </div>
 
 
-<!-- ==================== PÁGINA 2: CITOPLASMA Y TODOS LOS ORGÁNULOS ==================== -->
+<!-- ==================== HOJA 2: ORGÁNULOS Y METABOLISMO ==================== -->
 <div class="sheet">
   <div class="header">
     <div class="title-group">
-      <h1>🧬 ESQUEMA MAESTRO (PARTE 2): CITOPLASMA Y ORGÁNULOS CELULARES</h1>
-      <p>Biología y Geología 4º ESO • Unidad 2 • Páginas 14 a 18 del libro</p>
+      <h1>⚡ ESQUEMA MAESTRO (2/3): SISTEMAS DE MEMBRANAS Y ENERGÍA</h1>
+      <p>Apartados 2.8 a 2.11 (Páginas 15 a 18) • Biología y Geología 4º ESO</p>
     </div>
-    <div class="badge-tag">Hoja 2 de 2 • Orgánulos y Evolución</div>
+    <div class="badge-tag">BLOQUE II: ORGÁNULOS Y BIOENERGÉTICA</div>
   </div>
 
-  <!-- 3.3 CITOESQUELETO -->
-  <div class="section-card" style="border-left: 3.5px solid #0284c7;">
-    <div class="sec-heading blue">
-      <span>3.3</span> CITOPLASMA, CITOSOL Y LOS 3 FILAMENTOS DEL CITOESQUELETO
-    </div>
-    <div class="grid-3">
+  <!-- Bloque 1: Endomembranas -->
+  <div class="section-card" style="border-left: 4px solid #0284c7;">
+    <div class="sec-heading blue">📦 1. SISTEMA DE ENDOMEMBRANAS (RER, REL, GOLGI, LISOSOMAS Y VACUOLAS)</div>
+    <div class="grid-3" style="margin-bottom: 5px;">
       <div class="sub-box">
-        <div class="sub-title">1. Microfilamentos</div>
-        <div class="sub-desc">Proteína <strong>actina</strong> en doble hélice. <strong>Más delgados y frágiles</strong>. Contracción muscular y deformación celular.</div>
+        <div class="sub-title">Retículo Rugoso (RER)</div>
+        <div class="sub-desc">Sacos aplanados con <strong>ribosomas adheridos</strong>. Síntesis, plegamiento y glucosilación de proteínas de membrana y secreción.</div>
       </div>
       <div class="sub-box">
-        <div class="sub-title">2. Filamentos intermedios</div>
-        <div class="sub-desc">Proteína <strong>citoqueratina</strong> (solo animales). Como cuerdas. <strong>Más resistentes</strong> a tracción mecánica.</div>
-      </div>
-      <div class="sub-box">
-        <div class="sub-title">3. Microtúbulos</div>
-        <div class="sub-desc">Proteína <strong>tubulina</strong> en cilindros huecos. <strong>Más gruesos</strong>. Huso mitótico, centrosoma, cilios y flagelos.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ORGÁNULOS DE MEMBRANA SIMPLE -->
-  <div class="section-card" style="border-left: 3.5px solid #7c3aed;">
-    <div class="sec-heading purple">
-      ORGÁNULOS DE MEMBRANA SIMPLE: RETÍCULO, GOLGI, LISOSOMAS Y VACUOLAS
-    </div>
-    <div class="grid-4">
-      <div class="sub-box">
-        <div class="sub-title">RER (Rugoso)</div>
-        <div class="sub-desc">Con ribosomas. Síntesis y empaquetamiento de <strong>proteínas</strong>.</div>
-      </div>
-      <div class="sub-box">
-        <div class="sub-title">REL (Liso)</div>
-        <div class="sub-desc">Sin ribosomas. Síntesis de <strong>lípidos</strong> y <strong>destoxificación</strong> de drogas y toxinas.</div>
+        <div class="sub-title">Retículo Liso (REL)</div>
+        <div class="sub-desc">Túbulos sin ribosomas. <strong>Síntesis de lípidos</strong> (fosfolípidos, colesterol, esteroides) y detoxificación celular de fármacos.</div>
       </div>
       <div class="sub-box">
         <div class="sub-title">Aparato de Golgi</div>
-        <div class="sub-desc">Dictiosomas (cara cis recibe RER, cara trans emite vesículas). <strong>Modifica proteínas y forma lisosomas</strong>.</div>
+        <div class="sub-desc">Pilas de cisternas (dictiosomas) con cara <em>cis</em> (entrada) y <em>trans</em> (salida). Modificación, empaquetado y envío en vesículas.</div>
       </div>
-      <div class="sub-box">
-        <div class="sub-title">Lisosomas & Vacuolas</div>
-        <div class="sub-desc">
-          • <strong>Lisosomas:</strong> Enzimas digestivas ácidas.<br>
-          • <strong>Vacuolas:</strong> Almacén de agua y <strong>turgencia vegetal</strong>.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ORGÁNULOS DE DOBLE MEMBRANA -->
-  <div class="section-card" style="border-left: 3.5px solid #b45309;">
-    <div class="sec-heading amber">
-      ORGÁNULOS DE DOBLE MEMBRANA & TEORÍA ENDOSIMBIÓTICA (LYNN MARGULIS)
     </div>
     <div class="grid-2">
       <div class="sub-box">
-        <strong style="font-size:9.5px; color:#b45309;">⚡ Mitocondrias (Animales y Vegetales):</strong>
-        <div class="sub-desc">
-          • <strong>Estructura:</strong> Externa lisa, interna con <strong>crestas</strong>, matriz con <strong>ADN circular</strong> y ribosomas.<br>
-          • <strong>Función:</strong> Respiración celular: <code>Glucosa + 6 O₂ ➔ 6 CO₂ + 6 H₂O + ATP</code>.<br>
-          • División propia por fisión binaria.
-        </div>
+        <div class="sub-title">Lisosomas</div>
+        <div class="sub-desc">Vesículas esféricas del Golgi con <strong>enzimas hidrolíticas ácidas</strong>. Digestión celular (autofagia y heterofagia de nutrientes).</div>
       </div>
       <div class="sub-box">
-        <strong style="font-size:9.5px; color:#b45309;">🌱 Cloroplastos (Solo Células Vegetales):</strong>
-        <div class="sub-desc">
-          • <strong>Estructura:</strong> Doble membrana, <strong>estroma</strong> (ADN circular) y <strong>tilacoides</strong> apilados en <strong>grana</strong>.<br>
-          • <strong>Función:</strong> Fotosíntesis: <code>6 CO₂ + 6 H₂O + Luz ➔ Glucosa + 6 O₂</code>.<br>
-          • Fase luminosa en tilacoides; fase oscura en estroma.
-        </div>
-      </div>
-    </div>
-    <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:5px; padding:4px 6px; margin-top:4px; font-size:9px; color:#92400e;">
-      <strong>Teoría Endosimbiótica:</strong> Lynn Margulis demostró que proceden de procariotas fagocitados (endosimbiosis primaria: bacteria aerobia ➔ mitocondria; endosimbiosis secundaria: cianobacteria fotosintética ➔ cloroplasto). <em>Pruebas:</em> doble membrana, ADN circular propio y ribosomas bacterianos.
-    </div>
-  </div>
-
-  <!-- ORGÁNULOS SIN MEMBRANA -->
-  <div class="section-card" style="border-left: 3.5px solid #059669;">
-    <div class="sec-heading emerald">
-      ORGÁNULOS SIN MEMBRANA: RIBOSOMAS Y CENTROSOMA
-    </div>
-    <div class="grid-2">
-      <div class="sub-box">
-        <strong style="font-size:9.5px; color:#065f46;">⚙️ Ribosomas (En TODAS las células):</strong>
-        <div class="sub-desc">
-          • <strong>Estructura:</strong> ARNr + proteínas, dos subunidades (mayor y menor).<br>
-          • <strong>Localización:</strong> Libres en citosol, en matriz mitocondrial, estroma de cloroplastos, adheridos a RER y envoltura nuclear.<br>
-          • <strong>Función:</strong> Síntesis de proteínas (traducción del mensaje génico).
-        </div>
-      </div>
-      <div class="sub-box">
-        <strong style="font-size:9.5px; color:#065f46;">🎯 Centrosoma (SOLO en Células Animales):</strong>
-        <div class="sub-desc">
-          • <strong>Estructura:</strong> Diplosoma (2 centriolos perpendiculares de 9 tripletes de microtúbulos 9x3), material pericentriolar y áster.<br>
-          • <strong>Funciones:</strong> Centro organizador de microtúbulos (COMT); forma el <strong>huso mitótico</strong> en la división; forma <strong>cilios y flagelos</strong>.
-        </div>
+        <div class="sub-title">Vacuolas</div>
+        <div class="sub-desc">Sacos membranosos. En vegetales: gran vacuola central (almacena agua, pigmentos, reservas e iones; mantiene turgencia).</div>
       </div>
     </div>
   </div>
 
-  <!-- TABLA MAESTRA DE PREGUNTAS TRAMPA -->
-  <div class="section-card" style="border-left: 3.5px solid #0284c7; margin-bottom:0;">
-    <div class="sec-heading blue" style="font-size:10px;">
-      CUADRO COMPARATIVO PARA EL EXAMEN: ¿QUIÉN TIENE QUÉ?
+  <!-- Bloque 2: Orgánulos Energéticos y Endosimbiosis -->
+  <div class="section-card" style="border-left: 4px solid #059669;">
+    <div class="sec-heading emerald">🔥 2. BIOENERGÉTICA: MITOCONDRIAS, CLOROPLASTOS Y TEORÍA ENDOSIMBIÓTICA</div>
+    <div class="grid-2" style="margin-bottom: 5px;">
+      <div class="sub-box" style="background:#fef2f2; border-color:#fca5a5;">
+        <div class="sub-title" style="color:#b91c1c;">Mitocondria <span class="sub-en">Respiración Celular Aeróbica</span></div>
+        <div class="sub-desc" style="color:#7f1d1d;">
+          • <strong>Estructura:</strong> Doble membrana (externa lisa, interna con <em>crestas</em>) y matriz mitocondrial.<br>
+          • <strong>Función:</strong> Degrada materia orgánica para producir energía celular ATP.<br>
+          • <span class="hl-formula">Glucosa + 6 O₂ &rarr; 6 CO₂ + 6 H₂O + ATP</span>
+        </div>
+      </div>
+      <div class="sub-box" style="background:#f0fdf4; border-color:#86efac;">
+        <div class="sub-title" style="color:#15803d;">Cloroplasto <span class="sub-en">Fotosíntesis Oxigénica</span></div>
+        <div class="sub-desc" style="color:#14532d;">
+          • <strong>Estructura:</strong> Doble membrana, estroma y sacos aplanados (<em>tilacoides</em> agrupados en <em>grana</em>).<br>
+          • <strong>Función:</strong> Capta luz con clorofila y fabrica materia orgánica a partir de inorgánica.<br>
+          • <span class="hl-formula">6 CO₂ + 6 H₂O + Luz &rarr; Glucosa + 6 O₂</span>
+        </div>
+      </div>
     </div>
-    <table class="compare-table" style="margin-bottom:0;">
+
+    <!-- Endosymbiosis Summary -->
+    <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:5px; padding:5px 8px; font-size:8.8px; line-height:1.3; color:#92400e;">
+      <strong>Teoría Endosimbiótica (Lynn Margulis):</strong> Mitocondrias y cloroplastos proceden de bacterias primitivas fagocitadas por células eucariotas ancestrales. <em>Evidencias irrefutables:</em> poseen su propio ADN circular bicatenario, ribosomas 70S propios, doble membrana y se dividen de forma autónoma por bipartición.
+    </div>
+  </div>
+
+  <!-- Bloque 3: Tabla Comparativa Maestra de Orgánulos -->
+  <div class="section-card" style="border-left: 4px solid #7c3aed;">
+    <div class="sec-heading purple">📊 3. MATRIZ DE PRESENCIA DE ORGÁNULOS Y ESTRUCTURAS</div>
+    <table class="matrix-table">
       <thead>
         <tr>
-          <th>Estructura celular</th>
-          <th>Bacteria (Procariota)</th>
-          <th>Célula Animal (Eucariota)</th>
-          <th>Célula Vegetal (Eucariota)</th>
+          <th>Orgánulo / Estructura</th>
+          <th>Procariota (Bacteria)</th>
+          <th>Eucariota Animal</th>
+          <th>Eucariota Vegetal</th>
+          <th>Función Principal Resumida</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Membrana plasmática</strong></td>
-          <td> SÍ</td>
-          <td> SÍ (con colesterol)</td>
-          <td> SÍ (sin colesterol)</td>
-        </tr>
-        <tr>
-          <td><strong>Pared celular</strong></td>
-          <td> SÍ (peptidoglicano)</td>
-          <td>❌ NO</td>
-          <td> SÍ (celulosa)</td>
-        </tr>
-        <tr>
-          <td><strong>Núcleo verdadero</strong></td>
-          <td>❌ NO (nucleoide)</td>
-          <td> SÍ (doble membrana)</td>
-          <td> SÍ (doble membrana)</td>
-        </tr>
-        <tr>
-          <td><strong>Mitocondrias</strong></td>
-          <td>❌ NO</td>
-          <td> SÍ</td>
-          <td> SÍ</td>
-        </tr>
-        <tr>
-          <td><strong>Cloroplastos</strong></td>
-          <td>❌ NO</td>
-          <td>❌ NO</td>
-          <td> SÍ</td>
-        </tr>
-        <tr>
-          <td><strong>Centrosoma / Centriolos</strong></td>
-          <td>❌ NO</td>
-          <td> SÍ</td>
-          <td>❌ NO</td>
-        </tr>
-        <tr>
-          <td><strong>Ribosomas</strong></td>
-          <td> SÍ (70S)</td>
-          <td> SÍ (80S y 70S)</td>
-          <td> SÍ (80S y 70S)</td>
-        </tr>
+        <tr><td><strong>Pared Celular</strong></td><td>SÍ (Peptidoglicano)</td><td>❌ NO</td><td>SÍ (Celulosa)</td><td>Protección rígida contra lisis osmótica</td></tr>
+        <tr><td><strong>Membrana Plasmática</strong></td><td>SÍ</td><td>SÍ (con colesterol)</td><td>SÍ (sin colesterol)</td><td>Límite celular y control de transporte</td></tr>
+        <tr><td><strong>Citoesqueleto</strong></td><td>Rudimentario</td><td>SÍ (actina, tubulina)</td><td>SÍ</td><td>Armazón estructural y tráfico intracelular</td></tr>
+        <tr><td><strong>Retículo Endoplasmático (RER/REL)</strong></td><td>❌ NO</td><td>SÍ</td><td>SÍ</td><td>Síntesis de proteínas (RER) y lípidos (REL)</td></tr>
+        <tr><td><strong>Aparato de Golgi</strong></td><td>❌ NO</td><td>SÍ</td><td>SÍ</td><td>Glicosilación, empaquetado y secreción</td></tr>
+        <tr><td><strong>Lisosomas</strong></td><td>❌ NO</td><td>SÍ</td><td>Raros / Vacuola lítica</td><td>Digestión enzimática de macromoléculas</td></tr>
+        <tr><td><strong>Mitocondrias</strong></td><td>❌ NO</td><td>SÍ</td><td>SÍ</td><td>Respiración celular y síntesis de ATP</td></tr>
+        <tr><td><strong>Cloroplastos</strong></td><td>❌ NO</td><td>❌ NO</td><td>SÍ</td><td>Fotosíntesis y fijación de CO₂</td></tr>
+        <tr><td><strong>Centrosoma (con centriolos)</strong></td><td>❌ NO</td><td>SÍ</td><td>❌ NO (casquetes)</td><td>Organización del huso en división animal</td></tr>
+        <tr><td><strong>Ribosomas</strong></td><td>SÍ (70S)</td><td>SÍ (80S y 70S mit.)</td><td>SÍ (80S y 70S clor.)</td><td>Traducción de proteínas desde ARNm</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="sheet-footer">
-    <span>Biología 4º ESO • Unidad 2: La Célula</span>
-    <span>Esquema Maestro Completo • Hoja 2</span>
-    <span>Páginas 14 a 18</span>
+    <span>Biología 4º ESO • Tema 2: La Célula y Reproducción</span>
+    <span>Esquema Maestro Completo • Hoja 2 de 3</span>
+    <span>Páginas 15 a 18</span>
+  </div>
+</div>
+
+
+<!-- ==================== HOJA 3: NÚCLEO, CROMOSOMAS Y DIVISIÓN ==================== -->
+<div class="sheet">
+  <div class="header">
+    <div class="title-group">
+      <h1>🔬 ESQUEMA MAESTRO (3/3): NÚCLEO, CROMOSOMAS Y REPRODUCCIÓN</h1>
+      <p>Apartados 3.4 a 5.3 (Páginas 19 a 24) • Biología y Geología 4º ESO</p>
+    </div>
+    <div class="badge-tag">BLOQUE III: GENÉTICA Y DIVISIÓN CELULAR</div>
+  </div>
+
+  <!-- Bloque 1: El Núcleo Interfásico -->
+  <div class="section-card" style="border-left: 4px solid #0284c7;">
+    <div class="sec-heading blue">🧠 1. EL NÚCLEO EN INTERFASE: 4 COMPONENTES Y 2 FUNCIONES</div>
+    <div class="grid-4" style="margin-bottom: 4px;">
+      <div class="sub-box">
+        <div class="sub-title">1. Envoltura Nuclear</div>
+        <div class="sub-desc">Doble membrana continua con RER; atravesada por <strong>poros nucleares</strong> regulables para transporte núcleo-citoplasma.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">2. Nucleoplasma</div>
+        <div class="sub-desc">Medio acuoso interno (matriz nuclear) con iones, nucleótidos y enzimas para replicación y transcripción génica.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">3. Nucleolo</div>
+        <div class="sub-desc">Región esférica muy densa, sin membrana. Fábrica celular de <strong>síntesis de subunidades de ribosomas</strong> (ARNr).</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">4. Cromatina</div>
+        <div class="sub-desc"><em>Maraña</em> difusa de <strong>ADN bicatenario lineal asociado a histonas</strong>. En división se supercondensa en cromosomas.</div>
+      </div>
+    </div>
+    <div style="background:#e0f2fe; border:1px solid #bae6fd; border-radius:4px; padding:3px 8px; font-size:8.8px; color:#0369a1;">
+      <strong>2 Funciones Maestras:</strong> 1) <strong>Control metabólico</strong> celular mediante la transcripción en ARNm. 2) <strong>Conservación y herencia</strong> mediante la replicación fiel del ADN.
+    </div>
+  </div>
+
+  <!-- Bloque 2: Los Cromosomas y Cariotipo -->
+  <div class="section-card" style="border-left: 4px solid #7c3aed;">
+    <div class="sec-heading purple">🧬 2. CROMOSOMAS, TIPOS Y CARIOTIPO HUMANO (2n = 46)</div>
+    
+    <div class="grid-4" style="margin-bottom: 5px;">
+      <div class="sub-box">
+        <div class="sub-title">Metacéntrico</div>
+        <div class="sub-desc">Centrómero en el centro exacto. Brazos de <strong>igual longitud</strong>. (Pares 1, 3, 16, 19, 20).</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Submetacéntrico</div>
+        <div class="sub-desc">Centrómero desplazado. Brazos de <strong>longitud desigual</strong> (brazo corto p y largo q). (Mayoría: pares 4-12, X).</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Acrocéntrico</div>
+        <div class="sub-desc">Centrómero casi en el extremo. Brazo p <strong>diminuto con satélites</strong>. (Pares 13-15, 21-22, Y).</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Telocéntrico</div>
+        <div class="sub-desc">Centrómero en el extremo terminal absoluto. <strong>No existen en la especie humana</strong>.</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="sub-box" style="background:#f8fafc;">
+        <div class="sub-title">Ploidía: Haploide (n) vs Diploide (2n)</div>
+        <div class="sub-desc">
+          • <strong>Haploide (n):</strong> 1 juego de cromosomas sin parejas. Propio de los <strong>gametos</strong> (espermatozoides y óvulos, n=23).<br>
+          • <strong>Diploide (2n):</strong> 2 juegos (parejas de <strong>cromosomas homólogos</strong>). Propio de <strong>células somáticas</strong> y cigoto (2n=46).
+        </div>
+      </div>
+      <div class="sub-box" style="background:#f8fafc;">
+        <div class="sub-title">Cariotipo Humano (7 Grupos A–G)</div>
+        <div class="sub-desc">
+          • <strong>22 pares de autosomas</strong> (no sexuales) + <strong>1 par de heterocromosomas</strong> (sexuales: <strong>XX</strong> mujer, <strong>XY</strong> varón).<br>
+          • Grupos: A y B (grandes); C y D (medianos); E, F y G (pequeños).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bloque 3: División Celular: Mitosis vs Meiosis -->
+  <div class="section-card" style="border-left: 4px solid #059669;">
+    <div class="sec-heading emerald">🔄 3. DIVISIÓN CELULAR: PROCARIOTAS (BIPARTICIÓN) VS EUCARIOTAS (MITOSIS Y MEIOSIS)</div>
+    <div class="grid-3">
+      <div class="sub-box">
+        <div class="sub-title" style="color:#475569;">Fisión Binaria (Bacterias)</div>
+        <div class="sub-desc">
+          • Replicación del cromosoma bacteriano circular y división por septo central de estrangulación.<br>
+          • Produce <strong>2 clones idénticos</strong>. Reproducción asexual directa.
+        </div>
+      </div>
+      <div class="sub-box" style="background:#eff6ff; border-color:#93c5fd;">
+        <div class="sub-title" style="color:#1d4ed8;">Mitosis (Ecuacional)</div>
+        <div class="sub-desc">
+          • 1 sola división: de 1 célula madre (2n) genera <strong>2 células hijas idénticas (2n &rarr; 2n)</strong>.<br>
+          • <strong>Funciones:</strong> Crecimiento, renovación y reparación tisular, reproducción asexual.
+        </div>
+      </div>
+      <div class="sub-box" style="background:#fdf2f8; border-color:#f472b6;">
+        <div class="sub-title" style="color:#be185d;">Meiosis (Reduccional)</div>
+        <div class="sub-desc">
+          • 2 divisiones sucesivas: genera <strong>4 células haploides (n) genéticamente distintas</strong>.<br>
+          • <strong>Funciones:</strong> Formación de gametos para <strong>reproducción sexual</strong> y aporte de <strong>variabilidad</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bloque 4: Ciclos Biológicos y Comparativa de Reproducción -->
+  <div class="section-card" style="border-left: 4px solid #b45309;">
+    <div class="sec-heading amber">🌱 4. CICLOS BIOLÓGICOS Y COMPARATIVA: REPRODUCCIÓN ASEXUAL VS SEXUAL</div>
+    <div class="grid-3" style="margin-bottom: 5px;">
+      <div class="sub-box">
+        <div class="sub-title">Ciclo Haplonte</div>
+        <div class="sub-desc">Adulto haploide (n). Meiosis en el cigoto recién fecundado. Típico de <strong>algas y hongos</strong>.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Ciclo Diplonte</div>
+        <div class="sub-desc">Adulto diploide (2n). Meiosis solo para producir gametos (n). Fecundación restaura 2n. Típico de <strong>animales</strong>.</div>
+      </div>
+      <div class="sub-box">
+        <div class="sub-title">Ciclo Haplodiplonte</div>
+        <div class="sub-desc">Alternancia: <strong>Esporofito (2n)</strong> produce meiosporas que germinan en <strong>Gametofito (n)</strong>. Típico de <strong>plantas</strong>.</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="sub-box" style="background:#f8fafc;">
+        <div class="sub-title">Reproducción Asexual (Clónica)</div>
+        <div class="sub-desc">
+          <strong>Ventajas:</strong> 1 solo progenitor, sin gasto buscando pareja, muy rápida y económica.<br>
+          <strong>Desventajas:</strong> Sin variabilidad genética; alta vulnerabilidad a cambios ambientales.
+        </div>
+      </div>
+      <div class="sub-box" style="background:#f8fafc;">
+        <div class="sub-title">Reproducción Sexual (Biparental)</div>
+        <div class="sub-desc">
+          <strong>Ventajas:</strong> Gran <strong>variabilidad genética</strong> (combinación meiótica); favorece la adaptación y evolución.<br>
+          <strong>Desventajas:</strong> Requiere 2 progenitores, alto coste energético y búsqueda de pareja.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <span>Biología 4º ESO • Tema 2: La Célula y Reproducción</span>
+    <span>Esquema Maestro Completo • Hoja 3 de 3</span>
+    <span>Páginas 19 a 24</span>
   </div>
 </div>
 
@@ -554,8 +578,11 @@ html_content = """<!DOCTYPE html>
 </html>
 """
 
+# Write HTML file
 with open("esquema_maestro.html", "w", encoding="utf-8") as f:
     f.write(html_content)
+
+print("esquema_maestro.html actualizado con 3 hojas completas.")
 
 html_path = os.path.abspath('esquema_maestro.html')
 pdf_path = os.path.abspath('Esquema_Maestro_Tema_2_Completo.pdf')
@@ -575,6 +602,7 @@ print("Master Schema returncode:", res.returncode)
 
 doc = fitz.open(pdf_path)
 print("Total pages in master schema:", len(doc))
-doc[0].get_pixmap().save('fotos/master_schema_p1.png')
-doc[1].get_pixmap().save('fotos/master_schema_p2.png')
-print("Rendered master schema pages to PNG!")
+doc[0].get_pixmap(dpi=150).save('fotos/master_schema_p1.png')
+doc[1].get_pixmap(dpi=150).save('fotos/master_schema_p2.png')
+doc[2].get_pixmap(dpi=150).save('fotos/master_schema_p3.png')
+print("Rendered 3 master schema pages to PNG!")

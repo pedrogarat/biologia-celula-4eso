@@ -35,7 +35,20 @@ images = {
     "ribos_diag": img_b64("fotos/ribosoma_diagrama.png"),
     "ribos_micro": img_b64("fotos/ribosomas_micrografia.png"),
     "centro_diag": img_b64("fotos/centrosoma_diagrama.png"),
-    "centro_micro": img_b64("fotos/centriolos_micrografia.png")
+    "centro_micro": img_b64("fotos/centriolos_micrografia.png"),
+    "nucleo_diag": img_b64("fotos/nucleo_diagrama.png"),
+    "nucleo_micro": img_b64("fotos/nucleo_micrografia.png"),
+    "cromo_diag": img_b64("fotos/cromosoma_diagrama.png"),
+    "cromo_3d": img_b64("fotos/cromosoma_3d.png"),
+    "cromo_tipos": img_b64("fotos/cromosomas_tipos.png"),
+    "cariotipo_real": img_b64("fotos/cariotipo_humano_real.png"),
+    "fision_binaria": img_b64("fotos/fision_binaria.png"),
+    "mitosis_diag": img_b64("fotos/mitosis_esquema.png"),
+    "meiosis_diag": img_b64("fotos/meiosis_esquema.png"),
+    "ciclo_haplonte": img_b64("fotos/ciclo_haplonte.png"),
+    "ciclo_diplonte": img_b64("fotos/ciclo_diplonte.png"),
+    "ciclo_diplohaplo": img_b64("fotos/ciclo_diplohaplonte.png"),
+    "maria_blasco": img_b64("fotos/maria_blasco.png")
 }
 
 # Bank of 52 detailed questions categorized into 6 sections
@@ -610,7 +623,20 @@ questions_bank = [
         ],
         "correct": 0,
         "expl": "Los cilios (cortos y numerosos) y los flagelos (largos y escasos) están formados por microtúbulos originados a partir de los centriolos."
-    }
+    },
+    {"sec": 7, "cat": "4.1 Estructura del Cromosoma", "q": "¿Cómo se denominan los extremos redondeados de las cromátidas que protegen al cromosoma de la degradación?", "img": None, "opts": ["Centrómeros", "Telómeros", "Cinetocoros", "Satélites"], "correct": 1, "expl": "Los telómeros son secuencias protectoras situadas en los extremos de las cromátidas esenciales para la estabilidad del cromosoma."},
+    {"sec": 7, "cat": "4.1 Científicos Españoles", "q": "¿Qué prestigiosa científica española es pionera mundial en el estudio de los telómeros y el envejecimiento desde el CNIO?", "img": "maria_blasco", "opts": ["Margarita Salas", "María Antonia Blasco", "Elena García Armada", "Josefina Castellví"], "correct": 1, "expl": "María Antonia Blasco lidera las investigaciones internacionales sobre telómeros y cáncer en el CNIO."},
+    {"sec": 7, "cat": "4.2 Tipos de Cromosomas", "q": "¿Cómo se clasifica un cromosoma cuyo centrómero está en el centro exacto y sus brazos tienen la misma longitud?", "img": "cromo_tipos", "opts": ["Submetacéntrico", "Acrocéntrico", "Metacéntrico", "Telocéntrico"], "correct": 2, "expl": "En los cromosomas metacéntricos el centrómero está en el punto medio exacto y los brazos p y q son de igual longitud."},
+    {"sec": 7, "cat": "4.2 Tipos de Cromosomas", "q": "¿Cuál de las siguientes morfologías cromosómicas NO existe en la especie humana?", "img": None, "opts": ["Metacéntrico", "Acrocéntrico", "Submetacéntrico", "Telocéntrico"], "correct": 3, "expl": "Los seres humanos no poseemos ningún cromosoma telocéntrico (con el centrómero en el extremo terminal absoluto)."},
+    {"sec": 7, "cat": "4.3 Cariotipo y Ploidía", "q": "¿Cuál es la dotación cromosómica normal de las células somáticas de la especie humana?", "img": None, "opts": ["n = 23 cromosomas", "2n = 46 cromosomas", "2n = 48 cromosomas", "4n = 92 cromosomas"], "correct": 1, "expl": "Las células somáticas humanas son diploides con 2n = 46 cromosomas (22 pares de autosomas y 1 par de heterocromosomas sexuales)."},
+    {"sec": 7, "cat": "4.3 Cariotipo Humano", "q": "¿En cuántos grupos morfológicos (del A al G) se ordenan los cromosomas en el cariotipo humano?", "img": "cariotipo_real", "opts": ["5 grupos", "7 grupos", "10 grupos", "23 grupos"], "correct": 1, "expl": "Los cromosomas humanos se clasifican en 7 grupos (de la A a la G) según su tamaño decreciente y la posición del centrómero."},
+    {"sec": 7, "cat": "4.3 Cromosomas Sexuales", "q": "¿Cómo se denominan los cromosomas que determinan el sexo biológico en los mamíferos?", "img": None, "opts": ["Autosomas", "Heterocromosomas (o sexuales)", "Histonas", "Cinetocoros"], "correct": 1, "expl": "Los heterocromosomas o cromosomas sexuales (X e Y) determinan el sexo: XX en hembras y XY en machos."},
+    {"sec": 8, "cat": "5.1 División Procariota", "q": "¿Mediante qué mecanismo asexual se dividen las células procariotas como las bacterias?", "img": "fision_binaria", "opts": ["Mitosis", "Meiosis", "Fisión binaria (o bipartición)", "Esporulación meiótica"], "correct": 2, "expl": "Las bacterias se reproducen asexualmente por fisión binaria o amitosis, duplicando su ADN circular y dividiéndose por un septo central."},
+    {"sec": 8, "cat": "5.2 Mitosis", "q": "A partir de una célula madre diploide (2n = 4), ¿qué células se obtienen al terminar la mitosis?", "img": "mitosis_diag", "opts": ["4 células haploides (n = 2)", "2 células hijas idénticas (2n = 4)", "1 célula con 4 núcleos", "2 células haploides (n = 4)"], "correct": 1, "expl": "La mitosis es una división ecuacional que genera 2 células hijas con el mismo número de cromosomas e idéntica información genética (2n -> 2n)."},
+    {"sec": 8, "cat": "5.2 Meiosis", "q": "¿Cuál es la función biológica principal de la meiosis en organismos con reproducción sexual?", "img": "meiosis_diag", "opts": ["El crecimiento del cuerpo", "Reparar heridas en tejidos", "Formar 4 gametos haploides (n) y aportar variabilidad genética", "Duplicar el número de cromosomas"], "correct": 2, "expl": "La meiosis reduce a la mitad el número de cromosomas para formar gametos (n) y genera variabilidad genética mediante recombinación."},
+    {"sec": 8, "cat": "5.3 Ciclos Biológicos", "q": "¿En qué tipo de ciclo biológico el organismo adulto es diploide (2n) y la meiosis solo produce gametos?", "img": "ciclo_diplonte", "opts": ["Ciclo haplonte", "Ciclo diplonte", "Ciclo haplodiplonte", "Ciclo esporofítico puro"], "correct": 1, "expl": "El ciclo diplonte es típico de los animales: el individuo adulto es 2n y únicamente fabrica gametos haploides mediante meiosis."},
+    {"sec": 8, "cat": "5.3 Ciclos Biológicos", "q": "En el ciclo haplodiplonte de las plantas, ¿cómo se denomina el adulto diploide (2n) que produce esporas por meiosis?", "img": "ciclo_diplohaplo", "opts": ["Gametofito", "Esporofito", "Zigoto", "Cariotipo"], "correct": 1, "expl": "El esporofito es la fase adulta diploide (2n) de las plantas formadora de meiosporas, mientras que el gametofito es la fase haploide (n)."},
+    {"sec": 8, "cat": "5.3 Reproducción Comparada", "q": "¿Cuál es la principal ventaja evolutiva de la reproducción sexual frente a la asexual?", "img": None, "opts": ["No necesita buscar pareja", "Aporta variabilidad genética para adaptarse a cambios ambientales", "Requiere menos energía", "Genera millones de clones idénticos rápidamente"], "correct": 1, "expl": "La variabilidad genética generada por la meiosis y la fecundación es la base de la adaptación y la evolución biológica."},
 ]
 
 print(f"Total de preguntas en el banco: {len(questions_bank)}")
